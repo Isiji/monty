@@ -45,13 +45,13 @@ void addnode(stack_t **head, int n)
 /**
  * f_queue - prints the top
  * @head: stack head
- * @counter: line_number
+ * @len: line_number
  * Return: no return
 */
-void f_queue(stack_t **head, unsigned int counter)
+void f_queue(stack_t **head, unsigned int len)
 {
 	(void)head;
-	(void)counter;
+	(void)len;
 	bus.lifi = 1;
 }
 

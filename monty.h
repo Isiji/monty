@@ -26,7 +26,7 @@ typedef struct stack_s
  * struct bus_s - variables -args, file, line content
  * @arg: value
  * @file: pointer to monty file
- * @content: line content
+ * @input: line content
  * @lifi: flag change stack <-> queue
  * Description: carries values through the program
  */
@@ -34,7 +34,7 @@ typedef struct bus_s
 {
 	char *arg;
 	FILE *file;
-	char *content;
+	char *input;
 	int lifi;
 }  bus_t;
 extern bus_t bus;
@@ -58,16 +58,16 @@ char  *clean_line(char *content);
 void f_push(stack_t **head, unsigned int number);
 void f_pall(stack_t **head, unsigned int number);
 void f_pint(stack_t **head, unsigned int number);
-int execute(char *content, stack_t **head, unsigned int counter, FILE *file);
+int execute(char *input, stack_t **head, unsigned int len, FILE *file);
 void free_stack(stack_t *head);
-void f_pop(stack_t **head, unsigned int counter);
-void f_swap(stack_t **head, unsigned int counter);
-void f_add(stack_t **head, unsigned int counter);
-void f_nop(stack_t **head, unsigned int counter);
-void f_sub(stack_t **head, unsigned int counter);
+void f_pop(stack_t **head, unsigned int len);
+void f_swap(stack_t **head, unsigned int len);
+void f_add(stack_t **head, unsigned int len);
+void f_nop(stack_t **head, unsigned int len);
+void f_sub(stack_t **head, unsigned int len);
 void addnode(stack_t **head, int n);
 void addqueue(stack_t **head, int n);
-void f_queue(stack_t **head, unsigned int counter);
+void f_queue(stack_t **head, unsigned int len);
 void f_mul(stack_t **head, unsigned int line_number);
 void f_div(stack_t **head, unsigned int line_number);
 void f_mod(stack_t **head, unsigned int line_number);

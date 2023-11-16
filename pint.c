@@ -2,16 +2,16 @@
 /**
  * f_pint - prints the top
  * @head: stack head
- * @counter: line_number
+ * @len: line_number
  * Return: no return
 */
-void f_pint(stack_t **head, unsigned int counter)
+void f_pint(stack_t **head, unsigned int len)
 {
 	if (*head == NULL)
 	{
-		fprintf(stderr, "L%u: can't pint, stack empty\n", counter);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", len);
 		fclose(bus.file);
-		free(bus.content);
+		free(bus.input);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
