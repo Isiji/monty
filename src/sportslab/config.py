@@ -1,5 +1,9 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+def normalized_database_url(url: str) -> str:
+    if url.startswith("postgresql://"):
+        return url.replace("postgresql://", "postgresql+psycopg://", 1)
+    return url
 
 class Settings(BaseSettings):
     database_url: str = "sqlite:///sportslab.db"
@@ -13,3 +17,4 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+

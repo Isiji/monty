@@ -1,0 +1,59 @@
+Metadata-Version: 2.4
+Name: sports-research-lab
+Version: 0.1.0
+Summary: Personal sports ML research lab for prediction, grouping, and backtesting
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: sqlalchemy>=2.0
+Requires-Dist: pydantic>=2.7
+Requires-Dist: pydantic-settings>=2.2
+Requires-Dist: pandas>=2.2
+Requires-Dist: numpy>=1.26
+Requires-Dist: scikit-learn>=1.5
+Requires-Dist: typer>=0.12
+Requires-Dist: requests>=2.32
+Requires-Dist: psycopg[binary]>=3.2
+Requires-Dist: alembic>=1.13
+Provides-Extra: dev
+Requires-Dist: pytest>=8.2; extra == "dev"
+Requires-Dist: ruff>=0.5; extra == "dev"
+
+# Sports Research Lab
+
+Python-first machine learning research platform for sports predictions, confidence-ranked grouping, and backtesting.
+
+## Setup
+
+1. Create `.env` from `.env.example` and fill your credentials.
+2. Install dependencies.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e .[dev]
+```
+
+## Sprint 2 commands
+
+```bash
+sportslab init-db
+sportslab api-budget
+sportslab ingest-historical --league 39 --season 2024
+sportslab fetch-upcoming --league 39 --season 2025 --days-ahead 7
+sportslab ingest-stats --limit 20
+sportslab train-football
+sportslab predict-football --limit 16
+sportslab group-predictions --slate demo
+sportslab settle --slate demo
+sportslab evaluate --slate demo
+```
+
+## Migrations
+
+```bash
+alembic upgrade head
+```
+
+
+## Backtesting data source
+Historical fixtures and statistics are ingested from API-Football endpoints (`/fixtures`, `/fixtures/statistics`).

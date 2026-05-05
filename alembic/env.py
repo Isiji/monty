@@ -4,10 +4,14 @@ from alembic import context
 
 from sportslab.db.base import Base
 from sportslab.db import models  # noqa: F401
+from sportslab.config import normalized_database_url, settings
+
 
 config = context.config
-if config.config_file_name is not None:
+if config.config_file_name is not None and config.file_config.has_section("formatters"):
     fileConfig(config.config_file_name)
+
+config.set_main_option("sqlalchemy.url", normalized_database_url(settings.database_url))
 
 target_metadata = Base.metadata
 
